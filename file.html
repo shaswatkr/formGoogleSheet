@@ -1,146 +1,180 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=email], select {
-  width: 49%;
-  font-size:20px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-</head>
-<body style="background:#000;">
-
-<center><h1 style="color:#fff">wanTED Tutorial: Post HTML Form Data to Google Spreadsheet in 2 Minutes</h1></center>
-
-<form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
-<input id="nameField" name="entry.2005620554" placeholder="Enter your name" type="text" required> 
-<input id="emailField" name="entry.1045781291" placeholder="Enter your email" type="email" required> 
-<input id="mobField" name="entry.1065046570" placeholder="Enter your 10 Digit Phone Number" type="text" pattern="^\d{10}$" required>  
-<select id="cinema" name="entry.1166974658" placeholder="Select Cinema" required>
-<option value="">Why wanTED Talks Youtube Channel?</option>
-<option value="City: Delhi, Cinema: PVR Logix City Centre IMAX, Noida">Time Saving Fast Track Tutorials</option>
-<option value="City:Bengaluru  Cinema:Cinepolis IMAX Forum Shantiniketan">Provide Code for reference</option>
-<option value="City:Chennai Cinema:SPI Palazo The Forum Vijaya Mall, Vadapalani">Instant Replies of Comments</option>
-<option value="City:Pune Cinema:Cinepolis Westend Mall, Pune">Latest Code Updates</option> 
-</select> 
-<button id="send" type="submit" class="common_btn">Register Now</button>
-</form>
-
-<h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color:#fff"> Your Request has been posted to Google Spreadsheet</h3>
-
-
-
-<img src="wan.jpg" style="width:100%; opacity:.4;">
-
-
-
-
-<script>
-function postToGoogle() {
-                var field1 = $("#nameField").val();
-                var field2 = $("#emailField").val();
-                var field3 = $("#mobField").val();
-                var field4 = $("#cinema option:selected").text();
- 				
-				if(field1 == ""){
-					alert('Please Fill Your Name');
-					document.getElementById("nameField").focus();
-					return false;
-				}
-				if(field2 == ""){
-					alert('Please Fill Your Email');
-					document.getElementById("emailField").focus();
-					return false;
-				}
-				if(field3 == "" || field3.length > 10 || field3.length < 10){
-					alert('Please Fill Your Mobile Number');
-					document.getElementById("mobField").focus();
-					return false;
-				}
-
-
-				
-	
-                $.ajax({
-                    url: "https://docs.google.com/forms/d/e/1FAIpQLSccVKzKo_hzixDIU__Nxrz2Uu-DK2phgok3Wb_ws9PaL7lXmQ/formResponse?",
-					data: {"entry.2005620554": field1, "entry.1045781291": field2, "entry.1065046570": field3, "entry.1166974658": field4},
-                    type: "POST",
-                    dataType: "xml",
-                    success: function(d)
-					{
-					},
-					error: function(x, y, z)
-						{
-
-							$('#success-msg').show();
-							$('#form').hide();
-							
-						}
-                });
-				return false;
+    <style>
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
             }
-</script>
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .login {
+            border: 3px solid #f1f1f1;
+            width: 50%;
+            margin-top: 30px !important;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 3px 3px 3px 3px #ccc;
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            border: 0.04rem solid rgba(0, 0, 0, 0.2) !important;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4) !important;
+            transition: all 0.5s linear !important;
+        }
+
+        .login:hover {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        input[type=text],
+        input[type=email] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            box-shadow: 2px 2px rgba(0, 0, 0, 0.13) !important;
+        }
+
+        .btn-login {
+            background-color: #1b5384;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            width: 100%;
+            box-shadow: 2px 2px rgba(0, 0, 0, 0.13) !important;
+        }
+
+        .btn-login:hover {
+            opacity: 0.9;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 50px;
+            background-color: #f44336;
+            box-shadow: 2px 2px rgba(0, 0, 0, 0.13) !important;
+        }
+    </style>
+</head>
+
+<body style="background:#a0d2eb;">
+
+    <h1 style="text-align: center"> Contact Info </h1>
+
+    <form class="login" id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off">
+
+        <div class="container">
+            <label for="nameField"><strong> Name </strong></label>
+            <input id="nameField" name="entry.2005620554" placeholder="Enter your name..." type="text" required />
+
+            <label for="emailField"><strong> Email </strong></label>
+            <input id="emailField" name="entry.1045781291" placeholder="Enter your email..." type="email" required />
+
+            <label for="mobField"><strong> Mobile </strong></label>
+            <input id="mobField" name="entry.1065046570" placeholder="Enter your 10 Digit Phone Number" type="text"
+                pattern="^\d{10}$" required />
+
+            <label for="cinema"><strong> Address </strong></label>
+            <input id="cinema" name="entry.1166974658" placeholder="Enter your address..." type="text" required />
+
+            <button id="send" type="submit" class="button btn-block btn-lg btn-login"
+                style="vertical-align: middle"><span> Submit </span></button>
+        </div>
+
+    </form>
+
+    <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none;">
+        Your Request has been posted to Google Spreadsheet
+        <button class="btn-login cancelbtn" onclick="returnBack()"> Add more </button>
+    </h3>
+
+    <script>
+        function returnBack() {
+            $('#success-msg').hide();
+            $('#form').show();
+        }
+
+        function postToGoogle() {
+            var field1 = $("#nameField").val();
+            var field2 = $("#emailField").val();
+            var field3 = $("#mobField").val();
+            var field4 = $("#cinema").val();
+
+            if (field1 == "") {
+                alert('Please Fill Your Name');
+                document.getElementById("nameField").focus();
+                return false;
+            }
+            if (field2 == "") {
+                alert('Please Fill Your Email');
+                document.getElementById("emailField").focus();
+                return false;
+            }
+            if (field3 == "" || field3.length > 10 || field3.length < 10) {
+                alert('Please Fill Your Mobile Number');
+                document.getElementById("mobField").focus();
+                return false;
+            }
+
+            $.ajax({
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSccVKzKo_hzixDIU__Nxrz2Uu-DK2phgok3Wb_ws9PaL7lXmQ/formResponse?",
+                data: { "entry.2005620554": field1, "entry.1045781291": field2, "entry.1065046570": field3, "entry.1166974658": field4 },
+                type: "POST",
+                dataType: "xml",
+                success: function (d) {
+                },
+                error: function (x, y, z) {
+
+                    $('#success-msg').show();
+                    $('#form').hide();
+                }
+            });
+            return false;
+        }
+    </script>
 </body>
+
 </html>
