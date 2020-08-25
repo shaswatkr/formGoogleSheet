@@ -75,10 +75,10 @@ span.psw {
 <center><h1 style="color:#fff">wanTED Tutorial: Post HTML Form Data to Google Spreadsheet in 2 Minutes</h1></center>
 
 <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
-<input id="nameField" name="entry.2008660880" placeholder="Enter your name" type="text" required> 
-<input id="emailField" name="entry.1460631936" placeholder="Enter your email" type="email" required> 
-<input id="mobField" name="entry.904964149" placeholder="Enter your 10 Digit Phone Number" type="text" pattern="^\d{10}$" required>  
-<select id="cinema" name="entry.1878256062" placeholder="Select Cinema" required>
+<input id="nameField" name="entry.2005620554" placeholder="Enter your name" type="text" required> 
+<input id="emailField" name="entry.1045781291" placeholder="Enter your email" type="email" required> 
+<input id="mobField" name="entry.1065046570" placeholder="Enter your 10 Digit Phone Number" type="text" pattern="^\d{10}$" required>  
+<select id="cinema" name="entry.1166974658" placeholder="Select Cinema" required>
 <option value="">Why wanTED Talks Youtube Channel?</option>
 <option value="City: Delhi, Cinema: PVR Logix City Centre IMAX, Noida">Time Saving Fast Track Tutorials</option>
 <option value="City:Bengaluru  Cinema:Cinepolis IMAX Forum Shantiniketan">Provide Code for reference</option>
@@ -124,8 +124,8 @@ function postToGoogle() {
 				
 	
                 $.ajax({
-                    url: "https://docs.google.com/forms/d/e/1FAIpQLSfwwr_thxplsWYLLkeH1KiyId5KKvTDSfNnzPd3HTJm0Ee-lg/formResponse?",
-					data: {"entry.2008660880": field1, "entry.1460631936": field2, "entry.904964149": field3, "entry.1878256062": field4},
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLSccVKzKo_hzixDIU__Nxrz2Uu-DK2phgok3Wb_ws9PaL7lXmQ/formResponse?",
+					data: {"entry.2005620554": field1, "entry.1045781291": field2, "entry.1065046570": field3, "entry.1166974658": field4},
                     type: "POST",
                     dataType: "xml",
                     success: function(d)
